@@ -1,0 +1,54 @@
+.App {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+ 
+}
+h2 {
+  text-align: center;
+}
+.customer-list {
+  width: 35%;
+  overflow-y: auto;
+  height: 600px;
+}
+#line{
+  border-bottom: 1px solid #ccc;
+}
+.customer-list::-webkit-scrollbar {
+  width: 0;
+}
+.user {
+  padding: 20px;
+}
+.selected {
+  background-color: whitesmoke;
+  border-right: 2px solid;
+}
+.customer-details {
+  width: 65%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  padding: 0 50px;
+  background-color: whitesmoke;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.photo {
+  width: 70%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+.customer{
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+.avatar{
+  border-radius: 15px;
+}
