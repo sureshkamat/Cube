@@ -1,1 +1,1 @@
-<img src='/cube/public/image.png>
+![Image Alt Text](/cube/public/image.png)

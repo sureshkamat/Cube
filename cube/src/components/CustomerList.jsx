@@ -6,7 +6,7 @@ const CustomerList = ({ setSelectedCustomer }) => {
   const [selectedId, setSelectedId] = useState(null);
   
   useEffect(() => {
-    axios.get('https://reqres.in/api/users?per_page=100')
+    axios.get('https://reqres.in/api/users?per_page=20')
       .then(response => {
 
         setCustomers(response.data.data);
