@@ -51,7 +51,7 @@ const CustomerList = ({ setSelectedCustomer }) => {
           </div>
         </div>
       ))}
-      {loading && <p>Loading...</p>}
+      {loading && <h2>Loading...</h2>}
     </div>
   );
 }

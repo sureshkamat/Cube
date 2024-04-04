@@ -35,7 +35,7 @@ const CustomerDetails = ({ customer }) => {
     return (
       <div className="customer-details">
         <h2>Customer Details</h2>
-        <p>Please select a customer</p>
+        <h2>Please select a customer</h2>
       </div>
     );
   }
