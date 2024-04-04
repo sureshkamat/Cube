@@ -44,11 +44,10 @@ const CustomerDetails = ({ customer }) => {
     <div className="customer-details">
       <h2>Customer Details</h2>
       <div className='customer'>
-        <div>
-          <h3>First Name: {customer.first_name}</h3>
-          <h3>Last Name: {customer.last_name}</h3>
-        </div>
-        <img src={customer.avatar} alt='avatar' className='avatar'/>
+          <h2>{customer.firstName} {customer.lastName}</h2>
+          <p>{customer.username}</p>
+          <p>{customer.company.department}</p>
+          <hp>{customer.address.address},{customer.address.city},{customer.address.postalCode},{customer.address.state}</hp>
       </div>
       <div className="photo-grid">
         {photos.map((photo, index) => (

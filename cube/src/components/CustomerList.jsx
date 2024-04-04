@@ -4,17 +4,32 @@ import axios from 'axios';
 const CustomerList = ({ setSelectedCustomer }) => {
   const [customers, setCustomers] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
-  
-  useEffect(() => {
-    axios.get('https://reqres.in/api/users?per_page=20')
-      .then(response => {
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-        setCustomers(response.data.data);
+  useEffect(() => {
+    fetchCustomers();
+  }, [page]); // Fetch customers when the page changes
+
+  const fetchCustomers = () => {
+    setLoading(true);
+    axios.get(`https://dummyjson.com/users?limit=10&page=${page}`)
+      .then(response => {
+        setCustomers(prevCustomers => [...prevCustomers, ...response.data.users]);
+        setLoading(false);
       })
       .catch(error => {
         console.error('Error fetching customers:', error);
+        setLoading(false);
       });
-  }, []);
+  };
+
+  const handleScroll = (event) => {
+    const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
+    if (scrollHeight - scrollTop === clientHeight && !loading) {
+      setPage(prevPage => prevPage + 1); // Increment page when reaching the bottom
+    }
+  };
 
   const handleCustomerClick = (customer) => {
     setSelectedCustomer(customer);
@@ -22,8 +37,7 @@ const CustomerList = ({ setSelectedCustomer }) => {
   };
 
   return (
-    <div className="customer-list">
-      
+    <div className="customer-list" onScroll={handleScroll}>
       {customers.map(customer => (
         <div
           key={customer.id}
@@ -32,12 +46,12 @@ const CustomerList = ({ setSelectedCustomer }) => {
           id='line'
         >
           <div className='user'>
-            <p>{customer.first_name} - {customer.last_name}</p>
-            <p>{customer.email}</p>
+            <p>{customer.firstName} - {customer.lastName}</p>
+            <p>{customer.company.title}</p>
           </div>
-
         </div>
       ))}
+      {loading && <p>Loading...</p>}
     </div>
   );
 }
